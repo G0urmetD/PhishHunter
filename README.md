@@ -33,7 +33,20 @@ options:
 ```
 
 # Example
+## Single Domain
 ```bash
 python3 typo.py -target <domain>
+```
+
+## Multiple Domains
+Craft a new txt file with some domains to check:
+```bash
+domain1
+domain2
+doain3
+```
+
+Then execute the tool with -t-file parameter and txt as input:
+```bash
 python3 typo.py -t-file target-domains.txt
 ```
