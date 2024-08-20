@@ -55,7 +55,7 @@ Craft a new txt file with some domains to check:
 ```bash
 domain1
 domain2
-doain3
+domain3
 ```
 
 Then execute the tool with -t-file parameter and txt as input:
