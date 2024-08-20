@@ -10,6 +10,18 @@ The output is clearly structured and provides only the most relevant information
 pip3 install -r requirements.txt
 ```
 
+# Preparation
+Install all requirements:
+```bash
+pip3 install -r requirements.txt
+```
+
+Configure the 'config.ini' file with your AbuseIPDB API key:
+```ini
+[abuseipdb]
+api=<API-KEY>
+```
+
 # Usage
 ```bash
         ______ _     _     _     _   _             _
