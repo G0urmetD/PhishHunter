@@ -1,4 +1,5 @@
-requests==2.31.0
+requests==2.32.2
 python-whois==0.7.3
 configparser==6.0.0
 colorama==0.4.6
+urllib3>=2.2.2 # not directly required, pinned by Snyk to avoid a vulnerability
