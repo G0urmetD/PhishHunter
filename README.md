@@ -32,7 +32,7 @@ api=<API-KEY>
         \_|   |_| |_|_|___/_| |_\_| |_/\__,_|_| |_|\__\___|_|
 
         Author: G0urmetD
-        Version: 0.1
+        Version: 0.6
 
 usage: typo.py [-h] [-target TARGET] [-t-file T_FILE]
 
@@ -47,10 +47,15 @@ options:
 # Example
 ## Single Domain
 ```bash
-python3 typo.py -target <domain>
+python3 typo.py -targets <domain>
 ```
 
 ## Multiple Domains
+```bash
+python3 typo.py -targets <domain1> <domain2> <domain3>
+```
+OR
+
 Craft a new txt file with some domains to check:
 ```bash
 domain1
