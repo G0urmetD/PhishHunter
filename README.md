@@ -34,14 +34,16 @@ api=<API-KEY>
         Author: G0urmetD
         Version: 0.6
 
-usage: typo.py [-h] [-target TARGET] [-t-file T_FILE]
+usage: typo.py [-h] [-targets TARGETS [TARGETS ...]] [-t-file T_FILE] [-clean]
 
-Find possible phishing campaign domains
+Find possible phishing campaign domains.
 
 options:
-  -h, --help      show this help message and exit
-  -target TARGET  Defines the target domain
-  -t-file T_FILE  Defines target domains in a txt file
+  -h, --help            show this help message and exit
+  -targets TARGETS [TARGETS ...]
+                        Defines one or multiple target domains.
+  -t-file T_FILE        Defines target domains in a txt file.
+  -clean                Removes the temporary file.
 ```
 
 # Example
