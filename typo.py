@@ -200,7 +200,6 @@ def main():
     parser = argparse.ArgumentParser(description="Find possible phishing campaign domains.")
     parser.add_argument('-targets', nargs='+', help="Defines one or multiple target domains.")
     parser.add_argument("-t-file", help="Defines target domains in a txt file.")
-    parser.add_argument("-max-age", help="Max age of AbuseIPDB data in days.", type=int, default=90)
     parser.add_argument("-clean", action='store_true', help="Removes the temporary file.")
 
     args = parser.parse_args()
