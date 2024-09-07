@@ -27,7 +27,7 @@ api=<API-KEY>
         \_|   |_| |_|_|___/_| |_\_| |_/\__,_|_| |_|\__\___|_|
 
         Author: G0urmetD
-        Version: 0.6
+        Version: 0.7
 
 usage: typo.py [-h] [-targets TARGETS [TARGETS ...]] [-t-file T_FILE] [-clean]
 
