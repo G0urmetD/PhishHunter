@@ -5,11 +5,6 @@ Additionally, the IP addresses are matched against the AbuseIPDB database to che
 
 The output is clearly structured and provides only the most relevant information, such as the IP address, abuse level, ISP, country of origin and comments from reported incidents. PhishHunter is a valuable tool for security researchers and IT security departments to recognise and prevent phishing campaigns at an early stage.
 
-# Installation
-```bash
-pip3 install -r requirements.txt
-```
-
 # Preparation
 Install all requirements:
 ```bash
@@ -32,25 +27,32 @@ api=<API-KEY>
         \_|   |_| |_|_|___/_| |_\_| |_/\__,_|_| |_|\__\___|_|
 
         Author: G0urmetD
-        Version: 0.1
+        Version: 0.6
 
-usage: typo.py [-h] [-target TARGET] [-t-file T_FILE]
+usage: typo.py [-h] [-targets TARGETS [TARGETS ...]] [-t-file T_FILE] [-clean]
 
-Find possible phishing campaign domains
+Find possible phishing campaign domains.
 
 options:
-  -h, --help      show this help message and exit
-  -target TARGET  Defines the target domain
-  -t-file T_FILE  Defines target domains in a txt file
+  -h, --help            show this help message and exit
+  -targets TARGETS [TARGETS ...]
+                        Defines one or multiple target domains.
+  -t-file T_FILE        Defines target domains in a txt file.
+  -clean                Removes the temporary file.
 ```
 
 # Example
 ## Single Domain
 ```bash
-python3 typo.py -target <domain>
+python3 typo.py -targets <domain>
 ```
 
 ## Multiple Domains
+```bash
+python3 typo.py -targets <domain1> <domain2> <domain3>
+```
+OR
+
 Craft a new txt file with some domains to check:
 ```bash
 domain1
