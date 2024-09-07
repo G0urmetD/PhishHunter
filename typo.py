@@ -12,9 +12,42 @@ from tabulate import tabulate
 from concurrent.futures import ThreadPoolExecutor
 
 def get_api_key():
-    config = configparser.ConfigParser()
-    config.read('config.ini')
-    return config['abuseipdb']['api']
+    try:
+        config = configparser.ConfigParser()
+        config.read('config.ini')
+
+        # Prüfe, ob der API-Schlüssel vorhanden ist
+        api_key = config['abuseipdb'].get('api')
+        if not api_key:
+            raise ValueError("API key is missing in the config file.")
+
+        return api_key
+    except (configparser.Error, KeyError, ValueError) as e:
+        print(f"{Fore.RED}[!]{Style.RESET_ALL} Cannot find config.ini or no valid API key: {e}")
+        raise SystemExit(f"{Fore.RED}[!]{Style.RESET_ALL} Exiting program due to missing API key.")
+
+def check_api_on_start():
+    print(f"{Fore.YELLOW}[i]{Style.RESET_ALL} Checking API key...")
+    
+    try:
+        # Versuche, den API-Key zu holen und eine einfache Test-Anfrage zu senden
+        api_key = get_api_key()
+        test_url = 'https://api.abuseipdb.com/api/v2/check'
+        
+        headers = {
+            "Key": api_key,
+            "Accept": "application/json"
+        }
+        
+        # Testanfrage mit einer ungültigen IP, um die Verbindung und den Key zu prüfen
+        response = requests.get(test_url, headers=headers, params={"ipAddress": "127.0.0.1"})
+        if response.status_code == 401:
+            raise ValueError("Invalid API key.")
+        
+        print(f"{Fore.GREEN}[+]{Style.RESET_ALL} API key is valid and working.")
+    except Exception as e:
+        print(f"{Fore.RED}[!]{Style.RESET_ALL} API check failed: {e}")
+        raise SystemExit(f"{Fore.RED}[!]{Style.RESET_ALL} Exiting program due to API issues.")
 
 def retry_request(func, retries=3, delay=5):
     for attempt in range(retries):
@@ -158,13 +191,15 @@ def main():
         \_|   |_| |_|_|___/_| |_\_| |_/\__,_|_| |_|\__\___|_|   
 
         Author: G0urmetD
-        Version: 0.6
+        Version: 0.7
     """)
+
+    # run api key check
+    check_api_on_start()
     
     parser = argparse.ArgumentParser(description="Find possible phishing campaign domains.")
     parser.add_argument('-targets', nargs='+', help="Defines one or multiple target domains.")
     parser.add_argument("-t-file", help="Defines target domains in a txt file.")
-    parser.add_argument("-max-age", help="Max age of AbuseIPDB data in days.", type=int, default=90)
     parser.add_argument("-clean", action='store_true', help="Removes the temporary file.")
 
     args = parser.parse_args()
