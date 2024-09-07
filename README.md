@@ -5,11 +5,6 @@ Additionally, the IP addresses are matched against the AbuseIPDB database to che
 
 The output is clearly structured and provides only the most relevant information, such as the IP address, abuse level, ISP, country of origin and comments from reported incidents. PhishHunter is a valuable tool for security researchers and IT security departments to recognise and prevent phishing campaigns at an early stage.
 
-# Installation
-```bash
-pip3 install -r requirements.txt
-```
-
 # Preparation
 Install all requirements:
 ```bash
